@@ -29,9 +29,9 @@ func newTagCmd() *cobra.Command {
 				return printJSON(tags)
 			}
 			w := tabwriter.NewWriter(os.Stdout, 0, 4, 2, ' ', 0)
-			fmt.Fprintln(w, "ID\tNAME\tKIND")
+			_, _ = fmt.Fprintln(w, "ID\tNAME\tKIND")
 			for _, t := range tags {
-				fmt.Fprintf(w, "%s\t%s\t%s\n", shortID(t.ID), t.Name, t.Kind)
+				_, _ = fmt.Fprintf(w, "%s\t%s\t%s\n", shortID(t.ID), t.Name, t.Kind)
 			}
 			return w.Flush()
 		},

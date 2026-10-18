@@ -31,9 +31,9 @@ func newProjectCmd() *cobra.Command {
 				return printJSON(projects)
 			}
 			w := tabwriter.NewWriter(os.Stdout, 0, 4, 2, ' ', 0)
-			fmt.Fprintln(w, "ID\tTITLE\tSTART\tDUE")
+			_, _ = fmt.Fprintln(w, "ID\tTITLE\tSTART\tDUE")
 			for _, p := range projects {
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\n", shortID(p.ID), p.Title, formatDate(p.StartDate), formatDate(p.DueDate))
+				_, _ = fmt.Fprintf(w, "%s\t%s\t%s\t%s\n", shortID(p.ID), p.Title, formatDate(p.StartDate), formatDate(p.DueDate))
 			}
 			return w.Flush()
 		},

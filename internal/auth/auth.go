@@ -43,7 +43,7 @@ func Login(ctx context.Context, cfg config.Config, openURL func(string)) (config
 	if err != nil {
 		return config.Credentials{}, err
 	}
-	defer listener.Close()
+	defer func() { _ = listener.Close() }()
 	redirectURI := fmt.Sprintf("http://127.0.0.1:%d", listener.Addr().(*net.TCPAddr).Port)
 
 	type result struct {
@@ -64,10 +64,10 @@ func Login(ctx context.Context, cfg config.Config, openURL func(string)) (config
 		default:
 			resultCh <- result{code: q.Get("code")}
 		}
-		fmt.Fprintln(w, "Login complete. You can close this tab.")
+		_, _ = fmt.Fprintln(w, "Login complete. You can close this tab.")
 	})}
-	go server.Serve(listener)
-	defer server.Shutdown(context.Background())
+	go func() { _ = server.Serve(listener) }()
+	defer func() { _ = server.Shutdown(context.Background()) }()
 
 	authURL := googleAuthURL + "?" + url.Values{
 		"client_id":             {cfg.ClientID},
@@ -204,7 +204,7 @@ func do(req *http.Request, out any) error {
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err

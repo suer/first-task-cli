@@ -123,7 +123,7 @@ func (c *Client) call(ctx context.Context, method, name string, query url.Values
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err

@@ -442,9 +442,9 @@ func tagNames(tags []model.Tag, ids []string) []string {
 
 func printTasks(tasks []model.Task, tags []model.Tag, projects []model.Project) error {
 	w := tabwriter.NewWriter(os.Stdout, 0, 4, 2, ' ', 0)
-	fmt.Fprintln(w, "ID\tTITLE\tDUE\tPROJECT\tTAGS")
+	_, _ = fmt.Fprintln(w, "ID\tTITLE\tDUE\tPROJECT\tTAGS")
 	for _, t := range tasks {
-		fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\n", shortID(t.ID), t.Title, formatDate(t.DueDate), projectTitle(projects, t.ProjectID), strings.Join(tagNames(tags, t.TagIDs), ","))
+		_, _ = fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\n", shortID(t.ID), t.Title, formatDate(t.DueDate), projectTitle(projects, t.ProjectID), strings.Join(tagNames(tags, t.TagIDs), ","))
 	}
 	return w.Flush()
 }

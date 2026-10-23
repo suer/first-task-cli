@@ -3,6 +3,22 @@
 CLI for managing [FirstTask](https://github.com/suer/first-task) data on Firestore.
 It logs in as your Google account and talks to Firestore under the app's security rules.
 
+## Install
+
+Install a prebuilt release binary via [mise](https://mise.jdx.dev/):
+
+```sh
+mise use -g github:suer/first-task-cli
+```
+
+Or build from source:
+
+```sh
+git clone https://github.com/suer/first-task-cli.git
+cd first-task-cli
+go build -o firsttask .
+```
+
 ## Setup
 
 1. In the Firebase project's Google Cloud console, create an OAuth client of type **Desktop app**.
@@ -18,7 +34,7 @@ It logs in as your Google account and talks to Firestore under the app's securit
    ```
 
    Each key can also be set with `FIRSTTASK_API_KEY`, `FIRSTTASK_PROJECT_ID`, `FIRSTTASK_CLIENT_ID` and `FIRSTTASK_CLIENT_SECRET`.
-3. `go build -o firsttask . && ./firsttask login`
+3. `firsttask login`
 
 ## Usage
 

@@ -19,6 +19,8 @@ builds:
   - binary: firsttask
     env:
       - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X github.com/suer/first-task-cli/cmd.version={{.Version}}
     goos:
       - linux
       - windows

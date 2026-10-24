@@ -24,7 +24,7 @@ func Execute() error {
 		SilenceErrors: true,
 	}
 	root.PersistentFlags().BoolVar(&jsonOutput, "json", false, "output as JSON")
-	root.AddCommand(newLoginCmd(), newLogoutCmd(), newWhoamiCmd(), newTaskCmd(), newProjectCmd(), newTagCmd())
+	root.AddCommand(newLoginCmd(), newLogoutCmd(), newWhoamiCmd(), newTaskCmd(), newProjectCmd(), newTagCmd(), newVersionCmd())
 
 	if err := root.ExecuteContext(context.Background()); err != nil {
 		fmt.Fprintln(os.Stderr, "error:", err)

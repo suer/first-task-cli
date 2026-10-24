@@ -61,3 +61,9 @@ firsttask skills status
 firsttask skills update
 firsttask skills uninstall
 ```
+
+Claude Code does not read `~/.agents/skills`. Install into its skills directory instead:
+
+```sh
+firsttask skills install --prefix ~/.claude/skills
+```

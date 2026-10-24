@@ -23,5 +23,6 @@ config.json
 credentials.json
 
 /firsttask
+/first-task-cli
 
 dist/

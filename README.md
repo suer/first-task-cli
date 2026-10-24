@@ -52,3 +52,12 @@ firsttask tag list|add|rm
 
 IDs can be abbreviated to a unique prefix. Dates are `YYYY-MM-DD`, `today` or `tomorrow`.
 Add `--json` for machine-readable output.
+
+## Agent skill
+
+```sh
+firsttask skills install   # install to ~/.agents/skills
+firsttask skills status
+firsttask skills update
+firsttask skills uninstall
+```
